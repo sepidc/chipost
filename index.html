@@ -157,5 +157,31 @@
 <footer>
     <p>© 2025 چی‌پست - تمام حقوق محفوظ است</p>
 </footer>
+<script>
+document.querySelector("form").addEventListener("submit", function(e) {
+    e.preventDefault(); // نذار صفحه رفرش شه
+
+    const platform = document.getElementById("platform").value;
+    const topic = document.getElementById("topic").value;
+
+    if (!topic.trim()) {
+        alert("لطفاً موضوع پست را وارد کنید");
+        return;
+    }
+
+    const resultArea = document.createElement("div");
+    resultArea.style.marginTop = "30px";
+    resultArea.innerHTML = `<p><strong>در حال تولید پست برای ${platform} در موضوع "${topic}"...</strong></p>`;
+    this.after(resultArea);
+
+    // شبیه‌سازی پاسخ هوش مصنوعی
+    setTimeout(() => {
+        resultArea.innerHTML = `
+            <h3>پیشنهاد پست:</h3>
+            <p>✨ «اگر قراره موفق باشی، باید جرأت کنی خاص باشی.» #${platform} #${topic}</p>
+        `;
+    }, 1500);
+});
+</script>
 </body>
 </html>
