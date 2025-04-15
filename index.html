@@ -1,68 +1,161 @@
-<!-- پروژه چی‌پست: فایل آماده برای شروع توسعه سایت -->
 <!DOCTYPE html>
 <html lang="fa">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>چی‌پست؟ - تولید پست و ایده وایرال با هوش مصنوعی</title>
+    <title>چی‌پست - تولید محتوای هوشمند</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         body {
-            font-family: 'Tahoma', sans-serif;
+            font-family: 'Vazirmatn', Tahoma, sans-serif;
             direction: rtl;
-            background-color: #f4f4f4;
             margin: 0;
-            padding: 0;
+            background: linear-gradient(to bottom, #f0f4ff, #ffffff);
         }
-        header {
-            background-color: #6c63ff;
+        header, footer {
+            background-color: #4a47a3;
             color: white;
-            padding: 20px;
             text-align: center;
+            padding: 20px;
         }
         main {
-            padding: 40px;
-            max-width: 700px;
-            margin: auto;
+            max-width: 1100px;
+            margin: 30px auto;
             background: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
         }
-        footer {
-            background-color: #6c63ff;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            margin-top: 40px;
+        h1, h2 {
+            margin-bottom: 15px;
+        }
+        p {
+            margin: 15px 0;
+            line-height: 1.9;
         }
         .cta {
-            display: block;
-            margin: 30px 0;
+            display: inline-block;
             background: #ff5722;
             color: white;
-            padding: 15px;
-            text-align: center;
+            padding: 15px 40px;
+            margin-top: 40px;
+            border-radius: 12px;
             text-decoration: none;
-            border-radius: 10px;
             font-weight: bold;
+            font-size: 1.1rem;
+            transition: background 0.3s ease;
+        }
+        .cta:hover {
+            background: #e64a19;
+        }
+        .section {
+            margin-top: 60px;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .feature {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .feature i {
+            font-size: 1.5rem;
+            color: #4a47a3;
+        }
+        form {
+            margin-top: 30px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+        select, input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-top: 5px;
+            font-family: inherit;
+        }
+        button.generate {
+            background: #4a47a3;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            margin-top: 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button.generate:hover {
+            background: #3b388e;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>چی‌پست؟</h1>
-        <p>هوش مصنوعی برای تولید پست وایرال در شبکه‌های اجتماعی</p>
-    </header>
+<header>
+    <h1>چی‌پست؟</h1>
+    <p>تولید محتوای وایرال و پاسخ‌های هوشمند با کمک هوش مصنوعی</p>
+</header>
 
-    <main>
-        <h2>آیا نمی‌دونی چی پست کنی؟</h2>
+<main>
+    <section>
+        <h2>چی پست کنم؟</h2>
         <p>
-            چی‌پست بهت کمک می‌کنه تا فقط با یک کلیک، یک پست فوق‌العاده برای اینستاگرام، توییتر یا تلگرام داشته باشی! متن، عکس، هشتگ و حتی ویدئوی وایرال مخصوص تو تولید می‌کنیم.
+            با چی‌پست، فقط نوع شبکه اجتماعی و موضوع رو وارد کن؛ ما برایت متن، عکس و حتی ویدئوی وایرال تولید می‌کنیم.
         </p>
 
-        <a href="#" class="cta">شروع کن!</a>
-    </main>
+        <form>
+            <label for="platform">نوع شبکه اجتماعی:</label>
+            <select id="platform" name="platform">
+                <option value="instagram">اینستاگرام</option>
+                <option value="twitter">توییتر</option>
+                <option value="linkedin">لینکدین</option>
+                <option value="youtube">یوتیوب</option>
+            </select>
 
-    <footer>
-        <p>© 2025 چی‌پست - قدرت‌گرفته از هوش مصنوعی</p>
-    </footer>
+            <label for="topic">موضوع پست:</label>
+            <input type="text" id="topic" name="topic" placeholder="مثلاً موفقیت، طنز، آموزش...">
+
+            <button class="generate" type="submit">تولید پست</button>
+        </form>
+
+        <div class="features">
+            <div class="feature"><i class="fab fa-instagram"></i> پست مخصوص اینستاگرام، توییتر، لینکدین و...</div>
+            <div class="feature"><i class="fas fa-image"></i> تولید خودکار عکس با هوش مصنوعی</div>
+            <div class="feature"><i class="fas fa-video"></i> تولید ویدئو وایرال متناسب با موضوع</div>
+            <div class="feature"><i class="fas fa-calendar-alt"></i> زمان‌بندی پست‌ها برای انتشار خودکار</div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>چی بگم؟</h2>
+        <p>
+            در موقعیت‌های اجتماعی گیر کردی؟ نمی‌دونی چی به رئیس، دوست، فامیل یا هرکس دیگه بگی؟ فقط نقش، موضوع و لحن دلخواهت رو انتخاب کن و پاسخ هوشمندانه بگیر!
+        </p>
+        <div class="features">
+            <div class="feature"><i class="fas fa-comments"></i> پاسخ‌گویی مودبانه یا صمیمی</div>
+            <div class="feature"><i class="fas fa-user-friends"></i> تنظیم لحن بر اساس مخاطب (رسمی، دوستانه...)</div>
+            <div class="feature"><i class="fas fa-copy"></i> قابلیت کپی یا ارسال مستقیم پاسخ</div>
+            <div class="feature"><i class="fas fa-envelope-open-text"></i> تولید جواب بر اساس پیام طرف مقابل</div>
+        </div>
+    </section>
+
+    <a href="#" class="cta">همین حالا شروع کن!</a>
+</main>
+
+<footer>
+    <p>© 2025 چی‌پست - تمام حقوق محفوظ است</p>
+</footer>
 </body>
 </html>
