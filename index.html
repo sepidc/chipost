@@ -79,6 +79,7 @@
             border-radius: 10px;
             text-decoration: none;
             margin-top: 25px;
+            cursor: pointer;
         }
         footer p {
             margin: 0;
@@ -120,11 +121,19 @@
             </div>
         </section>
         <div style="text-align:center">
-            <a class="cta" href="#">شروع تولید محتوا</a>
+            <a class="cta" href="#" id="startButton">شروع تولید محتوا</a>
         </div>
     </main>
     <footer>
         <p>© 2025 چی‌پست - تمام حقوق محفوظ است</p>
     </footer>
+
+    <script>
+        document.getElementById("startButton").addEventListener("click", function(e) {
+            e.preventDefault();
+            alert("در حال اتصال به موتور تولید محتوا...");
+            // در اینجا می‌توانید فراخوانی API را اضافه کنید
+        });
+    </script>
 </body>
 </html>
