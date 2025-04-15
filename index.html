@@ -11,149 +11,120 @@
             font-family: 'Vazirmatn', Tahoma, sans-serif;
             direction: rtl;
             margin: 0;
-            background: radial-gradient(circle at top, #e1e8ff, #ffffff);
-            overflow-x: hidden;
+            background: #f4f6fc;
+            color: #333;
         }
         header, footer {
-            background: linear-gradient(90deg, #4a47a3, #6a64c9);
+            background: #1c2a5e;
             color: white;
             text-align: center;
             padding: 20px;
-            position: relative;
         }
-        header::after {
-            content: "";
+        .lang-switch {
             position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 80px;
-            background: url('https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif') no-repeat center center / contain;
-            z-index: 1;
+            top: 15px;
+            left: 20px;
+        }
+        .lang-switch button {
+            margin: 0 5px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
         }
         main {
-            max-width: 1100px;
-            margin: 60px auto;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
             background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-            position: relative;
-            z-index: 2;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
         h1, h2 {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         p {
-            margin: 15px 0;
-            line-height: 1.9;
-        }
-        .cta {
-            display: inline-block;
-            background: #ff5722;
-            color: white;
-            padding: 15px 40px;
-            margin-top: 40px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: background 0.3s ease;
-        }
-        .cta:hover {
-            background: #e64a19;
-        }
-        .section {
-            margin-top: 60px;
+            line-height: 1.8;
         }
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
             margin-top: 30px;
         }
         .feature {
-            background: #f0f4ff;
+            background: #e6ecff;
             padding: 20px;
-            border-radius: 14px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+            border-radius: 12px;
             display: flex;
-            align-items: flex-start;
-            gap: 15px;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
             transition: transform 0.3s;
         }
         .feature:hover {
             transform: translateY(-5px);
         }
         .feature i {
-            font-size: 1.8rem;
-            color: #4a47a3;
-            animation: pulse 2s infinite;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #1c2a5e;
         }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-        form {
-            margin-top: 30px;
-        }
-        label {
-            font-weight: bold;
-            display: block;
-            margin-top: 15px;
-        }
-        select, input[type="text"] {
-            width: 100%;
-            padding: 12px;
-            border-radius: 10px;
-            border: 1px solid #ccc;
-            margin-top: 5px;
-            font-family: inherit;
-        }
-        button.generate {
-            background: #4a47a3;
+        .cta {
+            display: inline-block;
+            background: #ff5722;
             color: white;
-            border: none;
-            padding: 14px 36px;
-            margin-top: 30px;
+            padding: 14px 30px;
             border-radius: 10px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background 0.3s;
+            text-decoration: none;
+            margin-top: 25px;
         }
-        button.generate:hover {
-            background: #3b388e;
+        footer p {
+            margin: 0;
         }
-        .lang-switch {
-            position: absolute;
-            top: 10px;
-            left: 20px;
-        }
-        #resultArea {
-            margin-top: 30px;
-            padding: 20px;
-            background: #fefefe;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        .hero-animation {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 40px;
+            display: block;
         }
     </style>
 </head>
 <body>
-<div class="lang-switch">
-    <button onclick="switchLang('fa')">🇮🇷 فارسی</button>
-    <button onclick="switchLang('en')">🇬🇧 English</button>
-</div>
-<header>
-    <h1 id="title">چی‌پست؟</h1>
-    <p id="subtitle">تولید محتوای وایرال و پاسخ‌های هوشمند با کمک هوش مصنوعی</p>
-</header>
-<main>
-    <!-- بقیه محتوای سایت همانند قبل باقی می‌ماند -->
-</main>
-<footer>
-    <p>© 2025 چی‌پست - تمام حقوق محفوظ است</p>
-</footer>
-<!-- اسکریپت‌ها همانند قبل -->
+    <div class="lang-switch">
+        <button onclick="switchLang('fa')">🇮🇷 فارسی</button>
+        <button onclick="switchLang('en')">🇬🇧 English</button>
+    </div>
+    <header>
+        <h1 id="title">چی‌پست</h1>
+        <p id="subtitle">تولید خودکار محتوا با قدرت هوش مصنوعی</p>
+    </header>
+    <main>
+        <img class="hero-animation" src="https://media.giphy.com/media/iicDrNGWxHmDrIni6j/giphy.gif" alt="AI animation">
+        <section class="features">
+            <div class="feature">
+                <i class="fas fa-robot"></i>
+                <h3>تولید محتوای خودکار</h3>
+                <p>با چی‌پست به سرعت پست‌های شبکه‌های اجتماعی، توضیحات محصولات و مطالب وبلاگی بسازید.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-language"></i>
+                <h3>چندزبانه و هوشمند</h3>
+                <p>امکان تولید محتوا به فارسی و انگلیسی به صورت هوشمند و دقیق.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-brain"></i>
+                <h3>پشتیبانی از GPT</h3>
+                <p>موتور چی‌پست بر بستر GPT اجرا می‌شود و پاسخ‌هایی خلاقانه تولید می‌کند.</p>
+            </div>
+        </section>
+        <div style="text-align:center">
+            <a class="cta" href="#">شروع تولید محتوا</a>
+        </div>
+    </main>
+    <footer>
+        <p>© 2025 چی‌پست - تمام حقوق محفوظ است</p>
+    </footer>
 </body>
 </html>
