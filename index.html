@@ -20,6 +20,17 @@
             text-align: center;
             padding: 20px;
         }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+        }
         .lang-switch {
             position: absolute;
             top: 15px;
@@ -82,7 +93,12 @@
             cursor: pointer;
         }
         footer p {
-            margin: 0;
+            margin: 10px 0;
+        }
+        .social-icons i {
+            margin: 0 10px;
+            font-size: 1.5rem;
+            color: white;
         }
         .hero-animation {
             width: 100%;
@@ -116,29 +132,35 @@
     <header>
         <h1 id="title">چی‌پست</h1>
         <p id="subtitle">تولید خودکار محتوا با قدرت هوش مصنوعی</p>
+        <nav>
+            <a href="#">خانه</a>
+            <a href="#">درباره ما</a>
+            <a href="#">خدمات</a>
+            <a href="#">ارتباط با ما</a>
+        </nav>
     </header>
     <main>
         <img class="hero-animation" src="https://media.giphy.com/media/iicDrNGWxHmDrIni6j/giphy.gif" alt="AI animation">
         <section class="features">
             <div class="feature">
-                <i class="fas fa-robot"></i>
-                <h3>تولید محتوای خودکار</h3>
-                <p>با چی‌پست به سرعت پست‌های شبکه‌های اجتماعی، توضیحات محصولات و مطالب وبلاگی بسازید.</p>
+                <i class="fas fa-pen"></i>
+                <h3>تولید متن</h3>
+                <p>ایجاد سریع پست‌های شبکه‌های اجتماعی، وبلاگ‌ها و توضیحات محصول</p>
             </div>
             <div class="feature">
-                <i class="fas fa-language"></i>
-                <h3>چندزبانه و هوشمند</h3>
-                <p>امکان تولید محتوا به فارسی و انگلیسی به صورت هوشمند و دقیق.</p>
+                <i class="fas fa-image"></i>
+                <h3>تولید تصویر</h3>
+                <p>تصاویر منحصر به‌فرد با ورودی ساده متنی تولید کن</p>
             </div>
             <div class="feature">
-                <i class="fas fa-brain"></i>
-                <h3>پشتیبانی از GPT</h3>
-                <p>موتور چی‌پست بر بستر GPT اجرا می‌شود و پاسخ‌هایی خلاقانه تولید می‌کند.</p>
+                <i class="fas fa-video"></i>
+                <h3>تولید ویدیو</h3>
+                <p>ویدیوهای کوتاه برای معرفی، تبلیغ یا آموزش بساز</p>
             </div>
         </section>
         <div style="text-align:center">
             <input type="text" id="promptInput" placeholder="موضوع مورد نظر را وارد کنید">
-            <button class="cta" id="startButton">شروع تولید محتوا</button>
+            <button class="cta" id="startButton"><i class="fas fa-play-circle" style="margin-left:8px;"></i> شروع تولید محتوا</button>
         </div>
         <div style="text-align:center">
             <p id="result"></p>
@@ -146,9 +168,34 @@
     </main>
     <footer>
         <p>© 2025 چی‌پست - تمام حقوق محفوظ است</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+        </div>
     </footer>
 
     <script>
+        async function switchLang(lang) {
+            const faTexts = {
+                title: "چی‌پست",
+                subtitle: "تولید خودکار محتوا با قدرت هوش مصنوعی",
+                placeholder: "موضوع مورد نظر را وارد کنید",
+                button: "شروع تولید محتوا"
+            };
+            const enTexts = {
+                title: "Chipost",
+                subtitle: "Smart Content Generation with AI",
+                placeholder: "Enter your topic",
+                button: "Start Content Generation"
+            };
+            const t = lang === 'fa' ? faTexts : enTexts;
+            document.getElementById('title').innerText = t.title;
+            document.getElementById('subtitle').innerText = t.subtitle;
+            document.getElementById('promptInput').placeholder = t.placeholder;
+            document.getElementById('startButton').innerText = t.button;
+        }
+
         document.getElementById("startButton").addEventListener("click", async function(e) {
             e.preventDefault();
             const prompt = document.getElementById("promptInput").value;
@@ -158,24 +205,24 @@
             }
             document.getElementById("result").innerText = "در حال تولید محتوا...";
 
-            const response = await fetch("https://api.openai.com/v1/chat/completions", {
-                method: "POST",
-                headers: {
-                    "Authorization": "Bearer YOUR_API_KEY_HERE",
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    model: "gpt-3.5-turbo",
-                    messages: [{ role: "user", content: prompt }],
-                    temperature: 0.7
-                })
-            });
+            try {
+                const response = await fetch("/api/chat", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ prompt })
+                });
 
-            const data = await response.json();
-            if (data.choices && data.choices.length > 0) {
-                document.getElementById("result").innerText = data.choices[0].message.content;
-            } else {
-                document.getElementById("result").innerText = "مشکلی در دریافت پاسخ پیش آمده.";
+                const data = await response.json();
+                if (data.result) {
+                    document.getElementById("result").innerText = data.result;
+                } else {
+                    document.getElementById("result").innerText = "پاسخی دریافت نشد.";
+                }
+            } catch (error) {
+                console.error("خطا در ارتباط با API داخلی:", error);
+                document.getElementById("result").innerText = "خطا در ارتباط با سرور. لطفاً بعداً تلاش کنید.";
             }
         });
     </script>
