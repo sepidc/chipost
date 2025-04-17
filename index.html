@@ -10,11 +10,11 @@
         :root {
             --primary-dark: #1e1f24;
             --primary-light: #2d2e36;
-            --accent: #c29fff;
-            --text-color: #f5f5f5;
-            --card-bg: #3a3b45;
-            --button-bg: #8e61ff;
-            --button-hover: #a37eff;
+            --accent: #b48eff;
+            --text-color: #f2f2f2;
+            --card-bg: #3b3b45;
+            --button-bg: #9b70ff;
+            --button-hover: #b18dff;
         }
 
         body {
@@ -40,21 +40,6 @@
             color: var(--text-color);
             text-decoration: none;
             font-size: 1rem;
-        }
-        .lang-switch {
-            position: absolute;
-            top: 15px;
-            left: 20px;
-        }
-        .lang-switch button {
-            margin: 0 5px;
-            background: transparent;
-            border: 1px solid var(--accent);
-            border-radius: 5px;
-            padding: 5px 10px;
-            color: var(--accent);
-            font-size: 1rem;
-            cursor: pointer;
         }
         main {
             max-width: 1000px;
@@ -153,4 +138,97 @@
     </style>
 </head>
 <body>
-<!-- Body remains unchanged -->
+<header>
+    <h1>چی‌پست - تولید محتوای هوشمند</h1>
+    <p>با یک کلیک، محتوای وایرال بساز</p>
+    <nav>
+        <a href="#">خانه</a>
+        <a href="#">درباره ما</a>
+        <a href="#">خدمات</a>
+        <a href="#">تبلیغات</a>
+    </nav>
+</header>
+
+<main>
+    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXplZjV5bHFtb3dwa3FyaGZrcjhyNGlnMnpxYWZkN2FyOXN2ajZjNiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/g9582DNuQppxC/giphy.gif" alt="AI Content" class="hero-animation">
+
+    <h2>چه محتوایی نیاز داری؟</h2>
+    <input type="text" id="promptInput" placeholder="مثلاً: یک پست انگیزشی برای اینستاگرام">
+    <button class="cta" onclick="sendPrompt()">تولید محتوا</button>
+
+    <div id="chatbox"></div>
+
+    <div class="features">
+        <div class="feature">
+            <i class="fas fa-robot"></i>
+            <h3>تولید خودکار پست</h3>
+            <p>با کمک هوش مصنوعی، محتوای جذاب و وایرال بساز</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-image"></i>
+            <h3>ساخت عکس و ویدیو</h3>
+            <p>تصاویر و ویدیوهای اختصاصی برای هر موضوع تولید کن</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-bullhorn"></i>
+            <h3>تبلیغات هوشمند</h3>
+            <p>پیج یا برندت رو در صفحه اول سایت نمایش بده</p>
+        </div>
+    </div>
+
+    <h2 style="margin-top: 50px;">خدمات ویژه چی‌پست</h2>
+    <div class="features">
+        <div class="feature">
+            <i class="fas fa-magic"></i>
+            <h3>محتوای اختصاصی برند</h3>
+            <p>چی‌پست به شما کمک می‌کند محتوایی منحصربه‌فرد، جذاب و متناسب با هویت برندتان تولید کنید.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-bolt"></i>
+            <h3>تحویل سریع</h3>
+            <p>در کمترین زمان، محتوای باکیفیت و آماده‌ی انتشار دریافت کنید و از رقبا جلو بزنید.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-user-shield"></i>
+            <h3>امنیت و محرمانگی</h3>
+            <p>تمام اطلاعات و محتوای شما نزد چی‌پست محفوظ می‌ماند. ما به حریم خصوصی شما احترام می‌گذاریم.</p>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>تمام حقوق محفوظ است © چی‌پست 2025</p>
+    <div class="social-icons">
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-telegram"></i>
+        <i class="fab fa-twitter"></i>
+    </div>
+</footer>
+
+<script>
+    function sendPrompt() {
+        const input = document.getElementById("promptInput");
+        const prompt = input.value.trim();
+        const chatbox = document.getElementById("chatbox");
+
+        if (prompt) {
+            const userMsg = document.createElement("div");
+            userMsg.className = "message user-message";
+            userMsg.textContent = prompt;
+            chatbox.appendChild(userMsg);
+
+            const botMsg = document.createElement("div");
+            botMsg.className = "message bot-message";
+            botMsg.textContent = "در حال تولید محتوا...";
+            chatbox.appendChild(botMsg);
+
+            setTimeout(() => {
+                botMsg.textContent = `✅ محتوای پیشنهادی: ${prompt} 🔥 #چی_پست`;
+            }, 1500);
+
+            input.value = "";
+        }
+    }
+</script>
+</body>
+</html>
